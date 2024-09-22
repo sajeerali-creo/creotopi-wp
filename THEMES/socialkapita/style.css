@@ -1,0 +1,663 @@
+@charset "UTF-8";
+
+/*
+Theme Name: Twenty Twenty-One
+Theme URI: https://wordpress.org/themes/twentytwentyone/
+Author: the WordPress team
+Author URI: https://wordpress.org/
+Description: Twenty Twenty-One is a blank canvas for your ideas and it makes the block editor your best brush. With new block patterns, which allow you to create a beautiful layout in a matter of seconds, this theme’s soft colors and eye-catching — yet timeless — design will let your work shine. Take it for a spin! See how Twenty Twenty-One elevates your portfolio, business website, or personal blog.
+Requires at least: 5.3
+Tested up to: 6.6
+Requires PHP: 5.6
+Version: 2.3
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: twentytwentyone
+Tags: one-column, accessibility-ready, custom-colors, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, block-patterns, rtl-language-support, sticky-post, threaded-comments, translation-ready, blog, portfolio
+
+Twenty Twenty-One WordPress Theme, (C) 2020 WordPress.org
+Twenty Twenty-One is distributed under the terms of the GNU GPL.
+*/
+
+/**
+ * SETTINGS
+ * File-header..........The file header for the themes style.css file.
+ * Fonts................Any font files, if the project needs specific fonts.
+ * Global...............Project-specific, globally available variables.
+ *
+ * TOOLS
+ * Functions............Global functions.
+ * Mixins...............Global mixins.
+ *
+ * GENERIC
+ * Normalize.css........Normalise browser defaults.
+ * Breakpoints..........Mixins and variables for responsive styles
+ * Vertical-margins.....Vertical spacing for the main components.
+ * Reset................Reset specific elements to make them easier to style in other contexts.
+ * Clearings............Clearings for the main components.
+ *
+ * ELEMENTS
+ * Blockquote...........Default blockquote.
+ * Forms................Element-level form styling.
+ * Headings.............H1–H6
+ * Links................Default links.
+ * Lists................Default lists.
+ * Media................Images, Figure, Figcaption, Embed, iFrame, Objects, Video.
+ *
+ * BLOCKS
+ * Audio................Specific styles for the audio block.
+ * Button...............Specific styles for the button block.
+ * Code.................Specific styles for the code block.
+ * Columns..............Specific styles for the columns block.
+ * Cover................Specific styles for the cover block.
+ * File.................Specific styles for the file block.
+ * Gallery..............Specific styles for the gallery block.
+ * Group................Specific styles for the group block.
+ * Heading..............Specific styles for the heading block.
+ * Image................Specific styles for the image block.
+ * Latest comments......Specific styles for the latest comments block.
+ * Latest posts.........Specific styles for the latest posts block.
+ * Legacy...............Specific styles for the legacy gallery.
+ * List.................Specific styles for the list block.
+ * Media text...........Specific styles for the media and text block.
+ * Navigation...........Specific styles for the navigation block.
+ * Paragraph............Specific styles for the paragraph block.
+ * Pullquote............Specific styles for the pullquote block.
+ * Quote................Specific styles for the quote block.
+ * Search...............Specific styles for the search block.
+ * Separator............Specific styles for the separator block.
+ * Table................Specific styles for the table block.
+ * Verse................Specific styles for the verse block.
+ * Video................Specific styles for the video block.
+ * Utilities............Block alignments.
+ *
+ * COMPONENTS
+ * Header...............Header styles.
+ * Footer...............Footer styles.
+ * Comments.............Comment styles.
+ * Archives.............Archive styles.
+ * 404..................404 styles.
+ * Search...............Search styles.
+ * Navigation...........Navigation styles.
+ * Footer Navigation....Footer Navigation styles.
+ * Pagination...........Pagination styles.
+ * Single...............Single page and post styles.
+ * Posts and pages......Misc, sticky post styles.
+ * Entry................Entry, author biography.
+ * Widget...............Widget styles.
+ * Editor...............Editor styles.
+ *
+ * UTILITIES
+ * A11y.................Screen reader text, prefers reduced motion etc.
+ * Color Palette........Classes for the color palette colors.
+ * Editor Font Sizes....Editor Font Sizes.
+ * Measure..............The width of a line of text, in characters.
+ */
+
+/* Categories 01 to 03 are the basics. */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--black);
+}
+
+h1, h2, h3, h4, h5, p, a, div {
+  line-height: 1.5em;
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  color: var(--primary);
+}
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.btn-primary {
+  border: none;
+  min-width: 100px;
+  padding: 0px 24px;
+  background-color: var(--primary);
+  color: var(--white);
+  border-radius: 6px;
+  height: 50px;
+  transition: all 0.3s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+.btn-primary:hover {
+  background-color: #000;
+}
+
+.btn-close {
+  width: 40px;
+  height: 40px;
+  background-color: var(--black);
+  color: var(--white);
+  font-size: 32px;
+  opacity: 1;
+  background-image: none;
+}
+
+.bg-img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+.bg-img svg {
+  filter: blur(45px);
+}
+
+.logo-slider {
+  padding: 20px;
+  overflow: hidden;
+  max-width: 1320px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+}
+.logo-slider:hover div {
+  animation-play-state: paused;
+}
+.logo-slider div {
+  display: flex;
+  position: relative;
+  animation: marquee 20s linear infinite;
+  justify-content: space-around;
+}
+.logo-slider img {
+  display: block;
+  min-width: var(--image-size);
+  height: var(--image-size);
+  margin: 0 1vw;
+  border-radius: 10px;
+}
+.logo-slider:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.client-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 160px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.client-image img {
+  width: 100%;
+  height: 60px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.menu-d li a {
+  font-size: 14px;
+  color: var(--white);
+}
+
+.menu-mob i {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary);
+  color: var(--white);
+  border-radius: 6px;
+}
+
+.menu-mobile {
+  background: #02091c;
+  position: fixed;
+  z-index: 13;
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+  .menu-mobile {
+    background: none;
+    position: static;
+  }
+}
+.header {
+  transition: all 0.5s ease;
+}
+
+.top-fixed {
+  position: fixed;
+  background-color: var(--black);
+  z-index: 13;
+  padding: 20px 0px !important;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+.top-fixed .logo {
+  height: 30px;
+}
+
+.offcanvas {
+  background-color: #02091c;
+}
+
+.social a {
+  display: flex;
+  width: 43px;
+  height: 43px;
+  border-radius: 160px;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  background-color: var(--black);
+}
+
+footer {
+  background-color: #0f172a;
+}
+
+h1, h2, h3, h4, h5, h6, span, a, p {
+  line-height: 1.5em !important;
+}
+
+.h1 {
+  font-size: 34px;
+  font-weight: 600;
+  color: var(--white);
+}
+
+@media (min-width: 992px) {
+  .h1 {
+    font-size: 46px;
+    font-weight: 600;
+  }
+}
+.h5 {
+  font-size: 16px;
+  font-weight: 400;
+}
+.h5 br {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .h5 {
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .h5 br {
+    display: inline-block;
+  }
+}
+.font-weight-600 {
+  font-weight: 600;
+}
+
+.dark .h1 {
+  color: var(--white);
+}
+.dark .h2 {
+  color: var(--white);
+}
+.dark .h5 {
+  color: var(--white) !important;
+}
+.dark .text-black-50 {
+  opacity: 0.5 !important;
+}
+.dark h3 {
+  color: var(--white) !important;
+}
+.dark h1 {
+  color: var(--white) !important;
+}
+.dark h2 {
+  color: var(--white) !important;
+}
+.dark span {
+  color: var(--white) !important;
+}
+.dark p {
+  color: var(--white) !important;
+  opacity: 0.6;
+}
+
+.moreless {
+  color: var(--primary);
+}
+
+:root {
+  --white: #fff;
+  --primary: #875FFF;
+  --black: #0f172a;
+  --text: #fff;
+}
+
+.text-white {
+  color: var(--white);
+}
+
+.text-black {
+  color: var(--white);
+}
+
+.text-gray {
+  color: var(--text);
+}
+
+.text-primary {
+  color: var(--primary) !important;
+}
+
+.bg-primary {
+  background-color: var(--primary) !important;
+}
+
+.bg-gradient2 {
+  background: rgb(220, 238, 242);
+  background: linear-gradient(0deg, rgba(220, 238, 242, 0) 0%, rgb(220, 238, 242) 100%);
+}
+
+.text-gradient {
+  background: -webkit-linear-gradient(180deg, #50C0FF, #875FFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-green {
+  background-color: #fff;
+  border: 1px solid #d1d1d1;
+  color: #12B019;
+}
+.bg-green:hover {
+  border: 1px solid #000;
+}
+
+.bg-white {
+  background-color: var(--black) !important;
+}
+
+.bg-black {
+  background-color: var(--black) !important;
+}
+
+.css-selector {
+  background: #131a30;
+}
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.inner-banner {
+  padding: 130px 0px 60px 0px;
+}
+
+@media (min-width: 992px) {
+  .inner-banner {
+    padding: 60px 0px;
+  }
+}
+.bg-banner {
+  background-attachment: fixed;
+}
+
+.padding-top {
+  padding-top: 24px;
+}
+
+.padding-bottom {
+  padding-bottom: 24px;
+}
+
+@media (min-width: 992px) {
+  .padding-top {
+    padding-top: 120px;
+  }
+  .padding-bottom {
+    padding-bottom: 120px;
+  }
+}
+.service-box {
+  width: 100%;
+  background: var(--black);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.0509803922);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.service-box img {
+  height: 174px;
+}
+
+.gd-design {
+  width: 100%;
+  height: 500px;
+  background-image: url(../img/good-design.png);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+  border-radius: 30px;
+}
+
+.project-image {
+  width: 100%;
+  height: 315px;
+  border-radius: 10px;
+  background-color: var(--white);
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  overflow: hidden;
+}
+.project-image img {
+  width: 100%;
+  height: 315px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.project-image img:hover {
+  transform: scale(1.5);
+  cursor: pointer;
+}
+
+.project-image2 {
+  width: 100%;
+  height: 315px;
+  border-radius: 10px;
+  background-color: var(--white);
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  overflow: hidden;
+}
+.project-image2 img {
+  width: 100%;
+  height: 315px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.container-xxl {
+  padding: 0px 24px;
+}
+
+.testimonial-box {
+  border-radius: 20px;
+  min-height: 300px;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.0509803922);
+  background-color: #1e293b;
+}
+
+.service-image {
+  height: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.video-box {
+  max-width: 900px;
+  margin: 0px auto;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 500px;
+}
+.video-box video {
+  left: 0px;
+  width: 100%;
+}
+
+#skills label {
+  color: #fff;
+}
+
+body {
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    background: #000;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    background: #fff;
+  }
+}
+.testimonials-section {
+  height: 390px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.slider__nav {
+  width: 12px;
+  height: 12px;
+  margin: 40px 12px;
+  border-radius: 50%;
+  z-index: 10;
+  outline: 6px solid #ccc;
+  outline-offset: -6px;
+  box-shadow: 0 0 0 0 #501acf, 0 0 0 0 rgba(86, 79, 217, 0);
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  backface-visibility: hidden;
+}
+
+.slider__nav:checked {
+  animation: check 0.4s linear forwards;
+}
+
+.slider__nav:checked:nth-of-type(1) ~ .slider__inner {
+  left: 0%;
+}
+
+.slider__nav:checked:nth-of-type(2) ~ .slider__inner {
+  left: -100%;
+}
+
+.slider__nav:checked:nth-of-type(3) ~ .slider__inner {
+  left: -200%;
+}
+
+.slider__nav:checked:nth-of-type(4) ~ .slider__inner {
+  left: -300%;
+}
+
+.slider__nav:checked:nth-of-type(5) ~ .slider__inner {
+  left: -400%;
+}
+
+.slider__inner {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 500%;
+  height: auto;
+  transition: left 0.4s;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.slider__contents {
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex: 1;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider__caption {
+  font-size: 14px;
+  color: #111;
+  opacity: 0.5;
+  font-family: "Roboto";
+  font-weight: bold;
+}
+
+.slider__txt {
+  font-size: 22px;
+  font-weight: bold;
+  font-family: "Roboto";
+  line-height: 1.7;
+  color: #111;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  max-width: 750px;
+  padding: 24px;
+}
+
+quote {
+  font-family: "Arial";
+  font-weight: bold;
+  font-size: 100px;
+  color: var(--primary);
+  margin-top: 24px;
+  opacity: 0.4;
+}
+@keyframes check {
+  50% {
+    outline-color: #333;
+    box-shadow: 0 0 0 12px #333, 0 0 0 36px rgba(51, 51, 51, 0.2);
+  }
+  100% {
+    outline-color: #333;
+    box-shadow: 0 0 0 0 #333, 0 0 0 0 rgba(51, 51, 51, 0);
+  }
+}/*# sourceMappingURL=main.css.map */
